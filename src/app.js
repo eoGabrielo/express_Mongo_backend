@@ -1,6 +1,9 @@
 const express = require('express'); //Import Biblioteca para criar servidores web, rotas e respostas HTTP
+const connectDB = require('./config/database'); //Import arquivo com conecxão ao banco de dados  MongoDB
 
 const app =  express(); // Variavel que recebe funçoes da biblioteca para criar servidor e suas rotas
+
+connectDB() //Conectar ao banco
 
 //Rota GET quando for acessado '/' na web para mostrar essa resposta.
 //req(request): Recebida / res(response) Enviar 
