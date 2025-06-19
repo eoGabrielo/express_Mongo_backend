@@ -1,11 +1,16 @@
 const express = require('express'); //Import Biblioteca para criar servidor e rotas HTTP.
 const connectDB = require('./config/database'); //Import arquivo com conecxão ao banco de dados MongoDB.
 const Cliente = require('./models/Cliente'); //Modelo de interação com o banco de dados, usaremos "Cliente..." pro CRUD.
+const path = require('path');
 
 
 const app =  express(); // Variavel que recebe funçoes da biblioteca para criar servidor e rotas HTTP.
 
 connectDB() //Conectar ao banco.
+
+//Indica ao express arquivos staticos para rodar no navegador
+app.use(express.static(path.join(__dirname, 'public')));//Garante o caminho certo para acessar a pasta 'public' dentro da pasta do arquivo app.js.
+app.use(express.json())//Garantir que o servidor consiga ler JSON.
 
 //Rota teste GET quando for acessado '/' na web.
 app.get('/', (req, res) => {
@@ -14,7 +19,6 @@ app.get('/', (req, res) => {
 
 const PORT = 3000; //Porta do servidor
 
-app.use(express.json())//Garantir que o servidor consiga ler JSON.
 
 app.post('/clientes', async(req, res) =>{
     try{

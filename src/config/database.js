@@ -5,7 +5,6 @@ const connectDB = async () => {
     //try e catch para tentar a conexao e captura erros
     try{
         await mongoose.connect('mongodb+srv://gabrielobank:qKs01IAZVw14vvLJ@gabrielo.qymc21h.mongodb.net/', {//Tentativa de conexao com o MongoDB, link do banco de dados usado do "https://www.mongodb.com/"
-            useUniFiedTopology: true, //Garantir compatibilidade e evitar warnings
         });
         console.log('MongoDB conectado com sucesso')
     }catch (error) {//Qualquer erro de conexao, cai no catch
