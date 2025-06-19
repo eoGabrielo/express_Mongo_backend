@@ -8,9 +8,8 @@ const app =  express(); // Variavel que recebe funçoes da biblioteca para criar
 connectDB() //Conectar ao banco
 
 //Rota GET quando for acessado '/' na web para mostrar essa resposta.
-//req(request): Recebida / res(response) Enviar 
 app.get('/', (req, res) => {
-    res.send('API Funcionando'); //Enviar texto
+    res.send('Ta rodando, GABRIEL'); //Enviar texto
 });
 
 const PORT = 3000; //Porta do servidor
@@ -19,15 +18,20 @@ app.use(express.json()) // Garantir que o servidor consiga ler JSON
 
 app.post('/clientes', async(req, res) =>{
     try{
-        const {nome, email, telefone, dataNascimento, ativo} = req.body;
+        //Pegando valores enviado pelo cliente via post se o cliente não enviar nada, req.body vai ser vazio ou undefined, e aí não vai ter valores.
+        const nome = req.body.nome;
+        const email = req.body.email;
+        const telefone = req.body.telefone;
+        const dataNascimento = req.body.dataNascimento;
+        const ativo = req.body.ativo;
 
-        const novoCliente = new Cliente({//Objeto 
-            nome,
-            email,
-            telefone,
-            dataNascimento,
-            ativo
-        })
+        const novoCliente = new Cliente({//Objeto
+            nome: nome,
+            email: email,
+            telefone: telefone,
+            dataNascimento: dataNascimento,
+            ativo: ativo
+});
 
         const clienteSalvo = await novoCliente.save(); // salvando esse novo cliente no banco MongoDB.
 
@@ -80,7 +84,7 @@ app.delete('/clientes/:id', async (req, res) => {
 
 
 
-//Express inicia o servidor na porta e retorna um callback console.log...
+//Quando iniciar o servidor retornar um callback no console.log
 app.listen(PORT, () => {
     console.log('Servidor rodando na porta' + PORT )
 });
