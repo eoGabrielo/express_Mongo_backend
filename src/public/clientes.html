@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista de Clientes</title>
+</head>
+<body>
+  <h1>Clientes Cadastrados</h1>
+  <a href="formulario.html">Cadastrar novo cliente</a>
+
+  <ul id="listaClientes"></ul>
+
+  <script>
+    async function carregarClientes() {
+      try {
+        const resposta = await fetch('http://localhost:3000/clientes');
+        const clientes = await resposta.json();
+
+        const lista = document.getElementById('listaClientes');
+        lista.innerHTML = '';
+
+        clientes.forEach(cliente => {
+          const li = document.createElement('li');
+          li.textContent = cliente.nome + ' - ' + cliente.email;
+          lista.appendChild(li);
+        });
+      } catch (err) {
+        console.error('Erro ao carregar clientes:', err);
+      }
+    }
+
+    window.onload = carregarClientes;
+  </script>
+</body>
+</html>
