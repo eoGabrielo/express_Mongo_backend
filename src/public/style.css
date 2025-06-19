@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(-45deg, #0d0d0d, #1a1a1a, #2b2b2b, #1a1a1a);
+  background-size: 400% 400%;
+  animation: backgroundShift 15s ease infinite;
+
+}
+
+@keyframes backgroundShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+form {
+  background-color: rgba(30, 30, 30, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.3), 0 0 20px rgba(0, 128, 255, 0.15);
+  width: 100%;
+  margin: auto;
+  max-width: 420px;
+  backdrop-filter: blur(6px);
+  animation: floatForm 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatForm {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 3%;
+  color: #00ffc8;
+  text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8;
+  animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+  0% { text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8; }
+  100% { text-shadow: 0 0 20px #00ffc8, 0 0 40px #00bba8; }
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #cccccc;
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  background-color: #1a1a1a;
+  color: #e6e6e6;
+  border: 1px solid #444;
+  font-size: 15px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+  border-color: #00ffc8;
+  box-shadow: 0 0 10px #00ffc8;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #00cc88, #0088cc);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  animation: pulseButton 2.5s infinite;
+  transition: transform 0.3s;
+}
+
+@keyframes pulseButton {
+  0% { box-shadow: 0 0 10px #00cc88; }
+  50% { box-shadow: 0 0 20px #00cc88, 0 0 40px #0088cc; }
+  100% { box-shadow: 0 0 10px #00cc88; }
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #00ffaa, #00bbff);
+}
+
+#resposta {
+  margin-top: 15px;
+  font-size: 15px;
+  color: #00e673;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
