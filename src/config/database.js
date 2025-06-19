@@ -6,7 +6,6 @@ const connectDB = async () => {
     try{
         //Tentativa de conexao com o MongoDB
         await mongoose.connect('mongodb+srv://gabrielobank:qKs01IAZVw14vvLJ@gabrielo.qymc21h.mongodb.net/', {
-            useNewUrlParse: true, //Garantir compatibilidade e evitar warnings
             useUniFiedTopology: true, //Garantir compatibilidade e evitar warnings
         });
         console.log('MongoDB conectado com sucesso')
