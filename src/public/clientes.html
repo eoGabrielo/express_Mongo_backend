@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Lista de Clientes</title>
+  <link rel="stylesheet" href="styleClientes.css">
 </head>
 <body>
   <h1>Clientes Cadastrados</h1>
@@ -21,7 +22,7 @@
 
         clientes.forEach(cliente => {
           const li = document.createElement('li');
-          li.textContent = cliente.nome + ' - ' + cliente.email;
+          li.textContent = "Nome: "+ cliente.nome + ' -> Email: ' + cliente.email;
           lista.appendChild(li);
         });
       } catch (err) {

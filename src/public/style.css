@@ -24,7 +24,7 @@ form {
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 255, 170, 0.3), 0 0 20px rgba(0, 128, 255, 0.15);
   width: 100%;
-  margin: auto;
+  margin: 0 auto 0 auto;
   max-width: 420px;
   backdrop-filter: blur(6px);
   animation: floatForm 3s ease-in-out infinite alternate;
@@ -45,7 +45,7 @@ h1 {
 
 .divTop{
   text-align: center;
-  margin: 1% 0 3% 0;
+  margin: 1% 0 1.5% 0;
 }
 
 .link{

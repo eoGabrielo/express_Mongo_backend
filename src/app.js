@@ -1,7 +1,7 @@
 const express = require('express'); //Import Biblioteca para criar servidor e rotas HTTP.
 const connectDB = require('./config/database'); //Import arquivo com conecxão ao banco de dados MongoDB.
 const Cliente = require('./models/Cliente'); //Modelo de interação com o banco de dados, usaremos "Cliente..." pro CRUD.
-const path = require('path');
+const path = require('path');//Auxiliar Express no caminho das pastas
 
 
 const app =  express(); // Variavel que recebe funçoes da biblioteca para criar servidor e rotas HTTP.
