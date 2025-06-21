@@ -46,12 +46,18 @@ a:hover {
 
 ul#listaClientes {
   list-style: none;
-  max-width: 600px;
+  width: 80%;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0;
 }
 
 ul#listaClientes li {
+  display: flex;
+  justify-content: space-between; /* separa os blocos texto e botão */
+  align-items: center; /* alinha verticalmente */
+  flex-wrap: wrap; /* evita quebra feia se ficar apertado */
+  
   background-color: rgba(30, 30, 30, 0.95);
   color: #e6e6e6;
   padding: 15px 20px;
@@ -67,7 +73,15 @@ ul#listaClientes li:hover {
   box-shadow: 0 0 20px rgba(0, 255, 170, 0.5), 0 0 30px rgba(0, 128, 255, 0.2);
 }
 
-@keyframes neonGlow {
-  0% { text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8; }
-  100% { text-shadow: 0 0 20px #00ffc8, 0 0 40px #00bba8; }
+.botao-excluir {
+  background: linear-gradient(45deg, #ff4e50, #f9d423);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 0 10px rgba(255, 78, 80, 0.4), 0 0 20px rgba(249, 212, 35, 0.2);
 }

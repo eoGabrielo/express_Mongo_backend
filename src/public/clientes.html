@@ -9,28 +9,53 @@
   <h1>Clientes Cadastrados</h1>
   <a href="formulario.html">Cadastrar novo cliente</a>
 
-  <ul id="listaClientes"></ul>
+  <ul id="listaClientes"></ul> <!--Tag HTML que recebe os dados do banco de dados-->
 
   <script>
     async function carregarClientes() {
       try {
-        const resposta = await fetch('http://localhost:3000/clientes');
-        const clientes = await resposta.json();
+        const resposta = await fetch('http://localhost:3000/clientes');//Requisição ao servidor para retornar os dados no banco de dados.
+        const clientes = await resposta.json();//Converte o retorno da API em JSON.
 
         const lista = document.getElementById('listaClientes');
-        lista.innerHTML = '';
+        lista.innerHTML = '';//Pega a Tag do HTML e limpa ela para receber os dados.
 
-        clientes.forEach(cliente => {
-          const li = document.createElement('li');
-          li.textContent = "Nome: "+ cliente.nome + ' -> Email: ' + cliente.email;
-          lista.appendChild(li);
+        clientes.forEach(cliente => {//Função que loga na tela para cada cliente com o laço forEach.
+          const li = document.createElement('li');//Criar uma tag NA MEMORIA DO JS(*Ainda não ta na tela HTML*).
+          li.innerHTML = "<strong>Nome:</strong> " + cliente.nome + "<br>" + "<strong>Email:</strong> " + cliente.email;//Tag "li" que ta recebendo seus valores com os dados do banco de dados que veio da requisição fetch da API("resposta" e "clientes").
+
+          const botaoExcluir = document.createElement('button');
+          botaoExcluir.classList.add("botao-excluir")
+          botaoExcluir.textContent= "Excluir";
+          botaoExcluir.onclick = async() =>{
+            const confirmar = confirm("Deseja exluir o cliente " + cliente.nome +" ?")
+            if (confirmar){
+              try{
+                const resposta = await fetch("http://localhost:3000/clientes/"+cliente._id,{
+                  method: "DELETE"
+                });
+                const resultado = await resposta.json();
+                if (resultado.mensagem) {
+                  alert(resultado.mensagem);
+                } else if (resultado.erro) {
+                   alert("Erro: " + resultado.erro);
+                }
+                carregarClientes(); // Atualiza a lista após excluir
+              }catch(err){
+                alert("Erro ao excluir cliente")
+              }
+            }
+          };
+          li.appendChild(botaoExcluir);
+          lista.appendChild(li);//*Pega o elemento criado e coloca na tela HTML*
         });
-      } catch (err) {
+      } catch (err) {//Captura erro para loga
         console.error('Erro ao carregar clientes:', err);
       }
     }
 
-    window.onload = carregarClientes;
+    window.onload = carregarClientes; //Executa a função assim que a página carregar.
+
   </script>
 </body>
 </html>
