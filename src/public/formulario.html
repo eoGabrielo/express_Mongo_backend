@@ -2,13 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro de Clientes</title>
+  <title>Cadastro de Produtos</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="divTop">
-    <h1>Cadastro de Cliente</h1>
-    <a href="produtos.html" class="link">Clientes cadastrados</a>
+    <h1>Cadastro de Produtos</h1>
+    <a href="produtos.html" class="link">Produtos cadastrados</a>
   </div>
 
   <form id="formProduto">
@@ -49,10 +49,10 @@
         });
 
         const resultado = await res.json();//'res' já recebeu a requisição da API e convertemos para JSON.
-        resposta.textContent = "Cliente cadastrado com sucesso!";//Mudar o valor da variavel 'resposta' para mostrar na pagina HTML, ela vem vazia e com 'textContent' recebeu string "Cliente cadastra...."
+        resposta.textContent = "Produto cadastrado com sucesso!";//Mudar o valor da variavel 'resposta' para mostrar na pagina HTML, ela vem vazia e com 'textContent' recebeu string "Produto cadastra...."
         form.reset();//Limpa form
       } catch (err) {//Captura erro(se tiver)
-        resposta.textContent = "Erro ao cadastrar cliente.";//Mostra erro na pagina HTML.
+        resposta.textContent = "Erro ao cadastrar produto.";//Mostra erro na pagina HTML.
         console.error(err);//Loga erro 
       }
     });

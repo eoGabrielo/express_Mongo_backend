@@ -68,7 +68,7 @@ app.get('/produtos/:id', async (req, res) => {
 
     if (!produto) {//Se o valor for falso, retornar um erro em JSON.
       return res.json({ erro: 'Produto não encontrado' });
-    }else//Se existir valor, retornar o cliente em JSON.
+    }else//Se existir valor, retornar o produto em JSON.
         res.json(produto); 
   } catch (error) {//Se a resposta ao banco de dados der erro.
     res.json({ erro: 'Erro ao buscar produto', detalhes: error.message });
