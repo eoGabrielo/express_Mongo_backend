@@ -53,24 +53,37 @@ ul#listaProdutos {
 }
 
 ul#listaProdutos li {
-  display: flex;
-  justify-content: space-between; /* separa os blocos texto e botão */
-  align-items: center; /* alinha verticalmente */
-  flex-wrap: wrap; /* evita quebra feia se ficar apertado */
-  
   background-color: rgba(30, 30, 30, 0.95);
   color: #e6e6e6;
-  padding: 15px 20px;
-  margin-bottom: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
   border-radius: 10px;
   border: 1px solid #00ffc8;
   box-shadow: 0 0 10px rgba(0, 255, 170, 0.2), 0 0 20px rgba(0, 128, 255, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  
+  display: block; /* agora o conteúdo flui em coluna */
 }
 
 ul#listaProdutos li:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(0, 255, 170, 0.5), 0 0 30px rgba(0, 128, 255, 0.2);
+}
+
+ul#listaProdutos li strong {
+  color: #00ffc8;
+}
+
+ul#listaProdutos li span {
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+ul#listaProdutos li .descricao {
+  max-height: 100px; /* Limita a altura da descrição */
+  overflow-y: auto; /* Cria scroll se a descrição for muito longa */
+  margin-bottom: 10px;
 }
 
 .botao-excluir {
@@ -81,7 +94,61 @@ ul#listaProdutos li:hover {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  margin-left: 20px;
   transition: background 0.3s, transform 0.2s;
   box-shadow: 0 0 10px rgba(255, 78, 80, 0.4), 0 0 20px rgba(249, 212, 35, 0.2);
+}
+
+.botao-excluir:hover {
+  background: linear-gradient(45deg, #f9d423, #ff4e50);
+  color: #1a1a1a;
+}
+
+.container-botao {
+  display: flex;
+  justify-content: flex-start; /* centraliza o botão na horizontal */
+  margin-top: 15px; /* dá espaço acima do botão */
+  margin-bottom: 15px;
+}
+
+.botao-quantidade {
+  background: linear-gradient(45deg, #00ffc8, #00bba8); /* degrade verde/ciano */
+  color: #0d0d0d;
+  border: none;
+  padding: 8px 14px;
+  margin: 0px 5px 0px 0px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  user-select: none; /* não permite seleção de texto ao clicar */
+  box-shadow: 0 0 10px rgba(0, 255, 200, 0.4), 0 0 20px rgba(0, 187, 168, 0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.botao-quantidade:hover {
+  background: linear-gradient(45deg, #00bba8, #008c7e);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.7), 0 0 30px rgba(0, 187, 168, 0.4);
+}
+
+.container-quantidade {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+
+}
+
+/* Se precisar do input quantidade entre os botões */
+.input-quantidade {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #00ffc8;
+  background-color: rgba(30, 30, 30, 0.95);
+  color: #e6e6e6;
+  box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
 }

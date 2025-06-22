@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <title>Lista de Produtos</title>
   <link rel="stylesheet" href="styleProdutos.css">
 </head>
+
 <body>
   <h1>Produtos Cadastrados</h1>
   <a href="formulario.html">Cadastrar novo produto</a>
@@ -22,35 +24,84 @@
 
         produtos.forEach(produto => {//Função que loga na tela para cada produto com o laço forEach.
           const li = document.createElement('li');//Criar uma tag NA MEMORIA DO JS(*Ainda não ta na tela HTML*).
-          li.innerHTML = "<strong>Nome:</strong>  " + produto.nome + "<br>" + "<strong>Descrição:</strong> " + produto.descricao + "<br>" + "<strong> R$</strong> " + produto.preco + "<br>" + "<strong> Estoque: </strong> " + produto.estoque; //Tag "li" que ta recebendo seus valores com os dados do banco de dados que veio da requisição fetch da API("resposta" e "produtos").
+          li.innerHTML = "<strong>Nome:</strong>  " + produto.nome + "<br>" + "<strong>Descrição:</strong> " + produto.descricao + "<br>" + "<strong> Valor R$:</strong> " + produto.preco + "<br>" + "<strong> Estoque: </strong> " + produto.estoque;//Tag "li" que ta recebendo seus valores com os dados do banco de dados que veio da requisição fetch da API("resposta" e "produtos").
 
+          //Criação do botão excluir
           const botaoExcluir = document.createElement('button');
           botaoExcluir.classList.add("botao-excluir")
-          botaoExcluir.textContent= "Excluir";
-          botaoExcluir.onclick = async() =>{
-            const confirmar = confirm("Deseja excluir o produto " + produto.nome +" ?")
-            if (confirmar){
-              try{
-                const resposta = await fetch("http://localhost:3000/produtos/"+produto._id,{
+          botaoExcluir.textContent = "Excluir";
+          botaoExcluir.onclick = async () => {
+            const confirmar = confirm("Deseja excluir o produto " + produto.nome + " ?")
+            if (confirmar) {
+              try {
+                const resposta = await fetch("http://localhost:3000/produtos/" + produto._id, {
                   method: "DELETE"
                 });
                 const resultado = await resposta.json();
                 if (resultado.mensagem) {
                   alert(resultado.mensagem);
                 } else if (resultado.erro) {
-                   alert("Erro: " + resultado.erro);
+                  alert("Erro: " + resultado.erro);
                 }
                 carregarProdutos(); // Atualiza a lista após excluir
-              }catch(err){
+              } catch (err) {
                 alert("Erro ao excluir produto")
               }
             }
           };
-          li.appendChild(botaoExcluir);
-          lista.appendChild(li);//*Pega o elemento criado e coloca na tela HTML*
+
+          //Estilização do botao excluir
+          const containerBotao = document.createElement("div");
+          containerBotao.classList.add("container-botao");
+          containerBotao.appendChild(botaoExcluir);//Adicionando o botão excluir no html, dentro da div da variavel containerBotao
+          li.appendChild(containerBotao);//Adiciona o container com o botao excluir estilizado dentro da li.
+          lista.appendChild(li);//Adicionar dentro da lista Ul esse elemento criado(li) na tela do HTML.
+
+          //Botoes de adicionar e remover quantidade do produto
+          // Botão de adicionar quantidade
+          const botaoMais = document.createElement('button');
+          botaoMais.textContent = '+';
+          botaoMais.classList.add('botao-quantidade'); // adiciona a classe pro estilo
+          botaoMais.onclick = async () => {
+            await atualizarEstoque(produto._id, produto.estoque + 1);
+          }
+
+          // Botão de diminuir quantidade
+          const botaoMenos = document.createElement('button');
+          botaoMenos.textContent = '-';
+          botaoMenos.classList.add('botao-quantidade'); // adiciona a classe pro estilo
+          botaoMenos.onclick = async () => {
+            if (produto.estoque > 0) {
+              await atualizarEstoque(produto._id, produto.estoque - 1);
+            }
+          }
+
+
+          //Função que atualiza o estoque
+          async function atualizarEstoque(id, novoValor) {
+            try {
+              const resposta = await fetch('http://localhost:3000/produtos/' + id + '/estoque', {
+                method: 'PATCH',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ estoque: novoValor })
+              });
+
+              const resultado = await resposta.json();
+              carregarProdutos();
+            } catch (err) {
+              alert('Erro ao atualizar estoque -> ' + err)
+            }
+          }
+
+          li.appendChild(botaoMais);
+          li.appendChild(botaoMenos);
+
         });
       } catch (err) {//Captura erro para loga
         console.error('Erro ao carregar produtos:', err);
+
       }
     }
 
@@ -58,4 +109,5 @@
 
   </script>
 </body>
+
 </html>
