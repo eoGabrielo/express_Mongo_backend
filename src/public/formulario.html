@@ -8,27 +8,23 @@
 <body>
   <div class="divTop">
     <h1>Cadastro de Cliente</h1>
-    <a href="clientes.html" class="link">Clientes cadastrados</a>
+    <a href="produtos.html" class="link">Clientes cadastrados</a>
   </div>
 
-  <form id="formCliente">
+  <form id="formProduto">
     <label>Nome: <input type="text" id="nome" required></label><br>
-    <label>Email: <input type="email" id="email" required></label><br>
-    <label>Telefone: <input type="text" id="telefone" required></label><br>
-    <label>Data de Nascimento: <input type="date" id="dataNascimento" required></label><br>
-    <label>Ativo: 
-      <select id="ativo">
-        <option value="true">Sim</option>
-        <option value="false">Não</option>
-      </select>
-    </label><br><br>
+    <label>Descricao: <input type="text" id="descricao" required></label><br>
+    <label>Codigo: <input type="text" id="codigo" required></label><br>
+    <label>preco: <input type="text" id="preco" required></label><br>
+    <label>estoque: <input type="number" id="estoque" required></label><br>
+    
     <button type="submit">Cadastrar</button> <!-- SUBMIT -> os dados do formulário vão para o servidor — geralmente no corpo da requisição, que o express acessa via *req.body*, cada id representa o valor na rota post-->
   </form>
 
   <p id="resposta"></p>
 
   <script>
-    const form = document.getElementById('formCliente'); //Amarzenar valores dos campos do formulario.
+    const form = document.getElementById('formProduto'); //Amarzenar valores dos campos do formulario.
     const resposta = document.getElementById('resposta');//Amarzena o valor quando o cadastro é salvo, aparece na tag '<p>'
 
     form.addEventListener('submit', async (e) => {
@@ -36,15 +32,15 @@
 
       const dados = {//Variaveis do obj recebe valores capturados pelo id do input.
         nome: document.getElementById('nome').value,
-        email: document.getElementById('email').value,
-        telefone: document.getElementById('telefone').value,
-        dataNascimento: document.getElementById('dataNascimento').value,
-        ativo: document.getElementById('ativo').value === "true"
+        descricao: document.getElementById('descricao').value,
+        codigo: document.getElementById('codigo').value,
+        preco: document.getElementById('preco').value,
+        estoque: document.getElementById('estoque').value
       };
 
       //Fazendo uma requisição POST para enviar os valores do objeto da variavel "dados" para o req.body(que o express pega os dados), enviamos via fetch e configuramos o seu envio de parametros, como method, headers e body(req.body).
       try {
-        const res = await fetch('http://localhost:3000/clientes', {//link da API onde faremos o POST (enviar os dados para o servidor).
+        const res = await fetch('http://localhost:3000/produtos', {//link da API onde faremos o POST (enviar os dados para o servidor).
           method: 'POST',//Config resquisição
           headers: {//Config resquisição
             'Content-Type': 'application/json'

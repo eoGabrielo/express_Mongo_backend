@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lista de Produtos</title>
+  <link rel="stylesheet" href="styleProdutos.css">
+</head>
+<body>
+  <h1>Clientes Cadastrados</h1>
+  <a href="formulario.html">Cadastrar novo produto</a>
+
+  <ul id="listaProdutos"></ul> <!--Tag HTML que recebe os dados do banco de dados-->
+
+  <script>
+    async function carregarProdutos() {
+      try {
+        const resposta = await fetch('http://localhost:3000/produtos');//Requisição ao servidor para retornar os dados no banco de dados.
+        const produtos = await resposta.json();//Converte o retorno da API em JSON.
+
+        const lista = document.getElementById('listaProdutos');
+        lista.innerHTML = '';//Pega a Tag do HTML e limpa ela para receber os dados.
+
+        produtos.forEach(produto => {//Função que loga na tela para cada produto com o laço forEach.
+          const li = document.createElement('li');//Criar uma tag NA MEMORIA DO JS(*Ainda não ta na tela HTML*).
+          li.innerHTML = "<strong>Nome:</strong>  " + produto.nome + "<br>" + "<strong>Descrição:</strong> " + produto.descricao + "<br>" + "<strong> R$</strong> " + produto.preco + "<br>" + "<strong> Estoque: </strong> " + produto.estoque; //Tag "li" que ta recebendo seus valores com os dados do banco de dados que veio da requisição fetch da API("resposta" e "produtos").
+
+          const botaoExcluir = document.createElement('button');
+          botaoExcluir.classList.add("botao-excluir")
+          botaoExcluir.textContent= "Excluir";
+          botaoExcluir.onclick = async() =>{
+            const confirmar = confirm("Deseja excluir o produto " + produto.nome +" ?")
+            if (confirmar){
+              try{
+                const resposta = await fetch("http://localhost:3000/produtos/"+produto._id,{
+                  method: "DELETE"
+                });
+                const resultado = await resposta.json();
+                if (resultado.mensagem) {
+                  alert(resultado.mensagem);
+                } else if (resultado.erro) {
+                   alert("Erro: " + resultado.erro);
+                }
+                carregarProdutos(); // Atualiza a lista após excluir
+              }catch(err){
+                alert("Erro ao excluir produto")
+              }
+            }
+          };
+          li.appendChild(botaoExcluir);
+          lista.appendChild(li);//*Pega o elemento criado e coloca na tela HTML*
+        });
+      } catch (err) {//Captura erro para loga
+        console.error('Erro ao carregar produtos:', err);
+      }
+    }
+
+    window.onload = carregarProdutos; //Executa a função assim que a página carregar.
+
+  </script>
+</body>
+</html>

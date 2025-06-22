@@ -44,7 +44,7 @@ a:hover {
   transform: scale(1.01);
 }
 
-ul#listaClientes {
+ul#listaProdutos {
   list-style: none;
   width: 80%;
   max-width: 900px;
@@ -52,7 +52,7 @@ ul#listaClientes {
   padding: 0;
 }
 
-ul#listaClientes li {
+ul#listaProdutos li {
   display: flex;
   justify-content: space-between; /* separa os blocos texto e botão */
   align-items: center; /* alinha verticalmente */
@@ -68,7 +68,7 @@ ul#listaClientes li {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-ul#listaClientes li:hover {
+ul#listaProdutos li:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(0, 255, 170, 0.5), 0 0 30px rgba(0, 128, 255, 0.2);
 }
