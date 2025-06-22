@@ -4,6 +4,8 @@ const Produto = require('./models/Produto'); //Modelo de interação com o banco
 const path = require('path');//Auxiliar Express no caminho das pastas
 
 
+
+
 const app =  express(); // Variavel que recebe funçoes da biblioteca para criar servidor e rotas HTTP.
 
 connectDB() //Conectar ao banco.
@@ -88,6 +90,27 @@ app.delete('/produtos/:id', async (req, res) => {
         res.json({ mensagem: 'Produto deletado com sucesso' });
   } catch (error) {
     res.json({ erro: 'Erro ao deletar produto', detalhes: error.message }); // Erro geral.
+  }
+});
+
+//Rota para Atualizar estoque do produto.
+
+app.patch('/produtos/:id/estoque', async (req, res) =>{
+  try{
+    const id = req.params.id;
+    const novoEstoque = Number(req.body.estoque)
+
+    const produtoAtualizado = await Produto.findByIdAndUpdate(id,
+    {estoque: novoEstoque},
+    {new: true});
+
+    if (!produtoAtualizado){
+      return res.json({erro: 'Produto não encontrado'})
+    }else{
+    res.json(produtoAtualizado);}
+  
+  }catch(error){
+    res.json({erro: 'Erro ao atualizar estoque', detalhes: error.message});
   }
 });
 
