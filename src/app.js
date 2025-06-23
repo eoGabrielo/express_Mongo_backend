@@ -2,6 +2,7 @@ const express = require('express'); //Import Biblioteca para criar servidor e ro
 const connectDB = require('./config/database'); //Import arquivo com conecxão ao banco de dados MongoDB.
 const Produto = require('./models/Produto'); //Modelo de interação com o banco de dados, usaremos "Produto..." pro CRUD.
 const path = require('path');//Auxiliar Express no caminho das pastas
+require('dotenv').config(); // Carrega as variáveis do .env
 
 
 
@@ -19,7 +20,8 @@ app.use(express.json())//Garantir que o servidor consiga ler JSON.
 //    res.send('Ta rodando, GABRIEL');
 //});
 
-const PORT = 3000; //Porta do servidor
+const MONGO_URI = process.env.MONGODB_URI;//Porta do servidor no arquivo ".env"
+const PORT = process.env.PORT || 3000; //Porta do servidor no arquivo ".env"
 
 
 app.post('/produtos', async(req, res) =>{
