@@ -1,7 +1,7 @@
 const mongoose =  require('mongoose'); //Import biblioteca "mongoose" para conexão ao banco de dados
 require('dotenv').config(); // Carrega as variáveis do .env
 
-const MONGO_URI = process.env.MONGODB_URI;//Porta do servidor no arquivo ".env"
+const MONGO_URI = process.env.MONGO_URI;//Porta do servidor no arquivo ".env"
 
 //Func async para conexao ao banco de dados, permite uso do await
 const connectDB = async () => {
