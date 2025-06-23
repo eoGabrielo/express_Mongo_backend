@@ -23,6 +23,7 @@ h1 {
   text-align: center;
   color: #00ffc8;
   margin-bottom: 20px;
+  font-size: 2rem;
   text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8;
   animation: neonGlow 2s ease-in-out infinite alternate;
 }
@@ -31,7 +32,7 @@ a {
   display: block;
   text-align: center;
   margin-bottom: 40px;
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: bold;
   text-decoration: none;
   color: #ffffff;
@@ -61,8 +62,8 @@ ul#listaProdutos li {
   border: 1px solid #00ffc8;
   box-shadow: 0 0 10px rgba(0, 255, 170, 0.2), 0 0 20px rgba(0, 128, 255, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  
-  display: block; /* conteúdo em coluna */
+  display: block;
+  font-size: 1rem;
 }
 
 ul#listaProdutos li:hover {
@@ -81,8 +82,8 @@ ul#listaProdutos li span {
 }
 
 ul#listaProdutos li .descricao {
-  max-height: 100px; /* altura limitada */
-  overflow-y: auto; /* scroll se precisar */
+  max-height: 100px;
+  overflow-y: auto;
   margin-bottom: 10px;
 }
 
@@ -119,7 +120,7 @@ ul#listaProdutos li .descricao {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.1rem;
   line-height: 1;
   user-select: none;
   box-shadow: 0 0 10px rgba(0, 255, 200, 0.4), 0 0 20px rgba(0, 187, 168, 0.2);
@@ -151,37 +152,37 @@ ul#listaProdutos li .descricao {
   box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
 }
 
-/* Responsividade para telas menores que 600px */
+/* ============ RESPONSIVO ============ */
 @media (max-width: 600px) {
   body {
     padding: 15px;
   }
 
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  a {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
   ul#listaProdutos {
     width: 95%;
-    max-width: none;
     padding: 0 10px;
   }
 
   ul#listaProdutos li {
     padding: 15px;
     margin-bottom: 15px;
-    font-size: 14px;
+    font-size: 0.95rem;
   }
 
-  h1 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-
-  a {
-    font-size: 16px;
-    margin-bottom: 25px;
-  }
-
-  .botao-excluir, .botao-quantidade {
+  .botao-excluir,
+  .botao-quantidade {
     padding: 6px 12px;
-    font-size: 14px;
+    font-size: 0.9rem;
   }
 
   .container-quantidade {

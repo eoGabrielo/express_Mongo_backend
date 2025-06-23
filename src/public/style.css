@@ -9,6 +9,8 @@ body {
   background: linear-gradient(-45deg, #0d0d0d, #1a1a1a, #2b2b2b, #1a1a1a);
   background-size: 400% 400%;
   animation: backgroundShift 15s ease infinite;
+  min-height: 100vh;
+  padding: 30px;
 }
 
 @keyframes backgroundShift {
@@ -17,14 +19,44 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+.divTop {
+  text-align: center;
+  margin: 20px 0 25px 0;
+  padding: 0 10px;
+}
+
+h1 {
+  color: #00ffc8;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8;
+  animation: neonGlow 2s ease-in-out infinite alternate;
+  font-size: 2rem;
+}
+
+.link {
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  text-shadow: 0 0 10px #f8f8f880, 0 0 20px #879190;
+  transition: 0.3s;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.link:hover {
+  color: #87f5dd;
+  transform: scale(1.05);
+}
+
 form {
   background-color: rgba(30, 30, 30, 0.95);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 255, 170, 0.3), 0 0 20px rgba(0, 128, 255, 0.15);
   width: 100%;
-  margin: 0 auto;
   max-width: 420px;
+  margin: auto;
   backdrop-filter: blur(6px);
   animation: floatForm 3s ease-in-out infinite alternate;
 }
@@ -34,43 +66,12 @@ form {
   100% { transform: translateY(-8px); }
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 1%;
-  color: #00ffc8;
-  text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8;
-  animation: neonGlow 2s ease-in-out infinite alternate;
-}
-
-.divTop {
-  text-align: center;
-  margin: 1% 0 1.5% 0;
-}
-
-.link {
-  margin: 1%;
-  font-size: 18px;
-  font-weight: bolder;
-  text-decoration: none;
-  color: #ffffff;
-  text-shadow: 0 0 10px #f8f8f880, 0 0 20px #879190;
-}
-
-.link:hover {
-  color: #87f5dd;
-  transform: scale(1.05);
-}
-
-@keyframes neonGlow {
-  0% { text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8; }
-  100% { text-shadow: 0 0 20px #00ffc8, 0 0 40px #00bba8; }
-}
-
 label {
   display: block;
   margin-bottom: 8px;
   color: #cccccc;
   font-weight: 500;
+  font-size: 1rem;
 }
 
 input,
@@ -83,7 +84,7 @@ select {
   background-color: #1a1a1a;
   color: #e6e6e6;
   border: 1px solid #444;
-  font-size: 15px;
+  font-size: 1rem;
   transition: border 0.3s, box-shadow 0.3s;
 }
 
@@ -100,7 +101,7 @@ button {
   background: linear-gradient(90deg, #00cc88, #0088cc);
   border: none;
   color: #fff;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
@@ -132,36 +133,37 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsividade para telas até 600px */
-@media (max-width: 600px) {
-  form {
-    padding: 20px;
-    max-width: 100%;
-    margin: 0 10px;
+/* =================== RESPONSIVO =================== */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 15px;
   }
 
   h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
   }
 
   .link {
-    font-size: 16px;
-    margin: 0 0 15px 0;
+    font-size: 0.95rem;
+  }
+
+  form {
+    padding: 20px;
+    max-width: 100%;
   }
 
   input,
   select {
+    font-size: 0.95rem;
     padding: 10px;
-    font-size: 14px;
   }
 
   button {
+    font-size: 1rem;
     padding: 12px;
-    font-size: 14px;
   }
 
-  #resposta {
-    font-size: 14px;
+  label {
+    font-size: 0.95rem;
   }
 }
