@@ -120,7 +120,7 @@ app.patch('/produtos/:id/estoque', async (req, res) =>{
 //Quando iniciar o servidor retornar um callback no console.log
 app.listen(PORT, () => {
     console.log('Servidor rodando na porta: ' + PORT + ".");
-    console.log('Link do servidor-> http://localhost:3000/formulario.html?")')
+    console.log('Link do servidor-> http://localhost:3000/formulario.html?')
 });
 
 
