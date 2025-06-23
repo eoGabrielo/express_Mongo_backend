@@ -20,7 +20,6 @@ app.use(express.json())//Garantir que o servidor consiga ler JSON.
 //    res.send('Ta rodando, GABRIEL');
 //});
 
-const MONGO_URI = process.env.MONGODB_URI;//Porta do servidor no arquivo ".env"
 const PORT = process.env.PORT || 3000; //Porta do servidor no arquivo ".env"
 
 
