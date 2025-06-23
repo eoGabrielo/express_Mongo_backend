@@ -19,36 +19,6 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-.divTop {
-  text-align: center;
-  margin: 20px 0 25px 0;
-  padding: 0 10px;
-}
-
-h1 {
-  color: #00ffc8;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8;
-  animation: neonGlow 2s ease-in-out infinite alternate;
-  font-size: 2rem;
-}
-
-.link {
-  font-size: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: #ffffff;
-  text-shadow: 0 0 10px #f8f8f880, 0 0 20px #879190;
-  transition: 0.3s;
-  display: inline-block;
-  margin-top: 10px;
-}
-
-.link:hover {
-  color: #87f5dd;
-  transform: scale(1.05);
-}
-
 form {
   background-color: rgba(30, 30, 30, 0.95);
   padding: 30px;
@@ -56,7 +26,7 @@ form {
   box-shadow: 0 0 10px rgba(0, 255, 170, 0.3), 0 0 20px rgba(0, 128, 255, 0.15);
   width: 100%;
   max-width: 420px;
-  margin: auto;
+  margin: 0 auto;
   backdrop-filter: blur(6px);
   animation: floatForm 3s ease-in-out infinite alternate;
 }
@@ -66,9 +36,41 @@ form {
   100% { transform: translateY(-8px); }
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #00ffc8;
+  font-size: 2rem;
+  text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8;
+  animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+.divTop {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.link {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  text-shadow: 0 0 10px #f8f8f880, 0 0 20px #879190;
+}
+
+.link:hover {
+  color: #87f5dd;
+  transform: scale(1.05);
+}
+
+@keyframes neonGlow {
+  0% { text-shadow: 0 0 10px #00ffc8, 0 0 20px #00bba8; }
+  100% { text-shadow: 0 0 20px #00ffc8, 0 0 40px #00bba8; }
+}
+
 label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: #cccccc;
   font-weight: 500;
   font-size: 1rem;
@@ -77,7 +79,7 @@ label {
 input,
 select {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin-top: 5px;
   margin-bottom: 20px;
   border-radius: 6px;
@@ -97,11 +99,11 @@ select:focus {
 
 button {
   width: 100%;
-  padding: 14px;
+  padding: 16px;
   background: linear-gradient(90deg, #00cc88, #0088cc);
   border: none;
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
@@ -122,7 +124,7 @@ button:hover {
 
 #resposta {
   margin-top: 15px;
-  font-size: 15px;
+  font-size: 1rem;
   color: #00e673;
   text-align: center;
   animation: fadeIn 1s ease-in;
@@ -133,37 +135,44 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* =================== RESPONSIVO =================== */
-@media screen and (max-width: 480px) {
+/* ========== RESPONSIVO CELULAR ========== */
+@media (max-width: 600px) {
   body {
     padding: 15px;
   }
 
+  form {
+    padding: 20px;
+    width: 100%;
+    max-width: none;
+    border-radius: 10px;
+  }
+
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
   }
 
   .link {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
-  form {
-    padding: 20px;
-    max-width: 100%;
+  label {
+    font-size: 0.95rem;
   }
 
   input,
   select {
-    font-size: 0.95rem;
-    padding: 10px;
+    padding: 12px;
+    font-size: 1rem;
   }
 
   button {
+    padding: 14px;
     font-size: 1rem;
-    padding: 12px;
   }
 
-  label {
+  #resposta {
     font-size: 0.95rem;
   }
 }
