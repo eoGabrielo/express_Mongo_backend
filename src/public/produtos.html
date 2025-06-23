@@ -16,7 +16,7 @@
   <script>
     async function carregarProdutos() {
       try {
-        const resposta = await fetch('http://localhost:3000/produtos');//Requisição ao servidor para retornar os dados no banco de dados.
+        const resposta = await fetch('https://express-mongo-backend.onrender.com/produtos');//Requisição ao servidor para retornar os dados no banco de dados.
         const produtos = await resposta.json();//Converte o retorno da API em JSON.
 
         const lista = document.getElementById('listaProdutos');
@@ -34,7 +34,7 @@
             const confirmar = confirm("Deseja excluir o produto " + produto.nome + " ?")
             if (confirmar) {
               try {
-                const resposta = await fetch("http://localhost:3000/produtos/" + produto._id, {
+                const resposta = await fetch("https://express-mongo-backend.onrender.com/produtos/" + produto._id, {
                   method: "DELETE"
                 });
                 const resultado = await resposta.json();
@@ -80,7 +80,7 @@
           //Função que atualiza o estoque
           async function atualizarEstoque(id, novoValor) {
             try {
-              const resposta = await fetch('http://localhost:3000/produtos/' + id + '/estoque', {
+              const resposta = await fetch('https://express-mongo-backend.onrender.com/produtos/' + id + '/estoque', {
                 method: 'PATCH',
                 headers: {
                   'Content-Type': 'application/json'

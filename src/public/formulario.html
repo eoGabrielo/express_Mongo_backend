@@ -40,7 +40,7 @@
 
       //Fazendo uma requisição POST para enviar os valores do objeto da variavel "dados" para o req.body(que o express pega os dados), enviamos via fetch e configuramos o seu envio de parametros, como method, headers e body(req.body).
       try {
-        const res = await fetch('http://localhost:3000/produtos', {//link da API onde faremos o POST (enviar os dados para o servidor).
+        const res = await fetch('https://express-mongo-backend.onrender.com/produtos', {//link da API onde faremos o POST (enviar os dados para o servidor).
           method: 'POST',//Config resquisição
           headers: {//Config resquisição
             'Content-Type': 'application/json'
