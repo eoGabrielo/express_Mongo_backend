@@ -62,7 +62,7 @@ ul#listaProdutos li {
   box-shadow: 0 0 10px rgba(0, 255, 170, 0.2), 0 0 20px rgba(0, 128, 255, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   
-  display: block; /* agora o conteúdo flui em coluna */
+  display: block; /* conteúdo em coluna */
 }
 
 ul#listaProdutos li:hover {
@@ -81,8 +81,8 @@ ul#listaProdutos li span {
 }
 
 ul#listaProdutos li .descricao {
-  max-height: 100px; /* Limita a altura da descrição */
-  overflow-y: auto; /* Cria scroll se a descrição for muito longa */
+  max-height: 100px; /* altura limitada */
+  overflow-y: auto; /* scroll se precisar */
   margin-bottom: 10px;
 }
 
@@ -105,23 +105,23 @@ ul#listaProdutos li .descricao {
 
 .container-botao {
   display: flex;
-  justify-content: flex-start; /* centraliza o botão na horizontal */
-  margin-top: 15px; /* dá espaço acima do botão */
+  justify-content: flex-start;
+  margin-top: 15px;
   margin-bottom: 15px;
 }
 
 .botao-quantidade {
-  background: linear-gradient(45deg, #00ffc8, #00bba8); /* degrade verde/ciano */
+  background: linear-gradient(45deg, #00ffc8, #00bba8);
   color: #0d0d0d;
   border: none;
   padding: 8px 14px;
-  margin: 0px 5px 0px 0px;
+  margin: 0 5px 0 0;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
   font-size: 18px;
   line-height: 1;
-  user-select: none; /* não permite seleção de texto ao clicar */
+  user-select: none;
   box-shadow: 0 0 10px rgba(0, 255, 200, 0.4), 0 0 20px rgba(0, 187, 168, 0.2);
   transition: background 0.3s, transform 0.2s;
 }
@@ -137,10 +137,8 @@ ul#listaProdutos li .descricao {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
-
 }
 
-/* Se precisar do input quantidade entre os botões */
 .input-quantidade {
   width: 50px;
   text-align: center;
@@ -151,4 +149,53 @@ ul#listaProdutos li .descricao {
   background-color: rgba(30, 30, 30, 0.95);
   color: #e6e6e6;
   box-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
+}
+
+/* Responsividade para telas menores que 600px */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  ul#listaProdutos {
+    width: 95%;
+    max-width: none;
+    padding: 0 10px;
+  }
+
+  ul#listaProdutos li {
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  a {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  .botao-excluir, .botao-quantidade {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .container-quantidade {
+    gap: 6px;
+  }
+
+  .input-quantidade {
+    width: 40px;
+    font-size: 14px;
+    padding: 4px;
+  }
+
+  .container-botao {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
