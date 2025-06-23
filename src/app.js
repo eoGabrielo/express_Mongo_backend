@@ -16,9 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));//Garante o caminho cert
 app.use(express.json())//Garantir que o servidor consiga ler JSON.
 
 //Rota teste GET quando for acessado '/' na web.
-//app.get('/', (req, res) => {
-//    res.send('Ta rodando, GABRIEL');
-//});
+app.get('/', (req, res) => {
+    res.send('Ta rodando, GABRIEL');
+});
 
 const PORT = process.env.PORT || 3000; //Porta do servidor no arquivo ".env"
 
