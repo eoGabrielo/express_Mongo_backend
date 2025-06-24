@@ -15,7 +15,7 @@ Atualização de estoque com botões + e -
 
 * [Node.js](https://nodejs.org/)
 * [Express.js](https://expressjs.com/)
-* [MongoDB](https://www.mongodb.com/) via [Mongoose](https://mongoosejs.com/)
+* [MongoDB](https://www.mongodb.com/)
 
 ### Frontend
 
