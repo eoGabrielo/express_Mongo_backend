@@ -4,10 +4,10 @@ Projeto API REST com Node.js, Express e MongoDB, integrada a uma interface HTML/
 
 ## Funcionalidades
 
-* [x] Cadastro de produtos via formulário HTML
-* [x] Listagem de produtos cadastrados com estilo responsivo
-* [x] Exclusão de produtos individualmente
-* [x] Atualização de estoque com botões + e -
+Cadastro de produtos via formulário HTML
+Listagem de produtos cadastrados com estilo responsivo
+Exclusão de produtos individualmente
+Atualização de estoque com botões + e -
 
 ## Tecnologias Utilizadas
 
@@ -65,15 +65,10 @@ Projeto API REST com Node.js, Express e MongoDB, integrada a uma interface HTML/
 }
 ```
 
----
-
-## 🌐 Interface HTML
+## Interface HTML
 
 * `formulario.html`: Permite cadastrar novos produtos.
 * `produtos.html`: Exibe todos os produtos cadastrados com opção de excluir e atualizar estoque.
 
-## ✍️ Autor
-
-Gabrielo - projeto de portfólio com Node.js, Express e MongoDB
 
 Deploy: [https://express-mongo-backend.onrender.com](https://express-mongo-backend.onrender.com/formulario.html)
