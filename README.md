@@ -107,16 +107,6 @@ As páginas foram estilizadas com CSS moderno e responsivo para boa visualizaç�
 
 ---
 
-## 🛠️ Melhorias futuras
-
-- 🔐 Adicionar autenticação com JWT
-- 📋 Validação de entrada com express-validator
-- 💾 Paginação na listagem de produtos
-- 📊 Dashboard com estatísticas do estoque
-- ⚛️ Migrar frontend para React ou Vue.js
-
----
-
 ## 👨‍💻 Autor
 
 **Gabrielo**  
