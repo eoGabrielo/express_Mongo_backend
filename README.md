@@ -1,74 +1,131 @@
-# Cadastro de Produtos - API
+# 🛍️ Cadastro de Produtos - API REST com Node.js, Express e MongoDB
 
-Projeto API REST com Node.js, Express e MongoDB, integrada a uma interface HTML/CSS para cadastro, listagem e gerenciamento de produtos.
+Este é um projeto completo de **cadastro de produtos**, com frontend responsivo e backend em Node.js + Express, integrando com banco de dados MongoDB Atlas. Os usuários podem:
 
-## Funcionalidades
+- Cadastrar produtos com nome, descrição, preço, código e estoque.
+- Visualizar a lista de produtos cadastrados.
+- Atualizar o estoque de cada item (aumentar ou diminuir).
+- Excluir produtos do sistema.
 
-Cadastro de produtos via formulário HTML
-Listagem de produtos cadastrados
-Exclusão de produtos individualmente
-Atualização de estoque com botões + e -
+---
 
-## Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
-### Backend
+| Camada         | Tecnologias                                               |
+|----------------|------------------------------------------------------------|
+| **Frontend**   | HTML5, CSS3 (responsivo), JavaScript Vanilla              |
+| **Backend**    | Node.js, Express.js                                        |
+| **Banco de Dados** | MongoDB Atlas (com Mongoose ODM)                     |
+| **Deploy**     | Render.com (deploy automático do backend)                 |
 
-* [Node.js](https://nodejs.org/)
-* [Express.js](https://expressjs.com/)
-* [MongoDB](https://www.mongodb.com/)
+---
 
-### Frontend
+## 📂 Estrutura do Projeto
 
-* HTML5
-* CSS3 (com responsividade)
-* JavaScript (fetch API para comunicação com o backend)
-
-### Outros
-
-* [dotenv](https://www.npmjs.com/package/dotenv) para variáveis de ambiente
-
-## Rotas da API
-
-### Criar produto
-
-**POST** `/produtos`
-
-```json
-{
-  "nome": "Produto A",
-  "descricao": "Descricao do produto",
-  "codigo": "001",
-  "preco": "99.90",
-  "estoque": 10
-}
+```
+src/
+├── config/
+│   └── database.js        # Conexão com MongoDB
+├── models/
+│   └── Produto.js         # Schema Mongoose do Produto
+├── public/
+│   ├── formulario.html    # Página para cadastro
+│   ├── produtos.html      # Página de listagem
+│   ├── style.css          # Estilo do formulário
+│   └── styleProdutos.css  # Estilo da listagem
+├── .env                   # Variáveis de ambiente (MONGO_URI, PORT)
+├── app.js                 # Arquivo principal do servidor Express
 ```
 
-### Listar todos os produtos
+---
 
-**GET** `/produtos`
+## 🔧 Como rodar localmente
 
-### Buscar um produto por ID
-
-**GET** `/produtos/:id`
-
-### Deletar produto por ID
-
-**DELETE** `/produtos/:id`
-
-### Atualizar estoque de um produto
-
-**PATCH** `/produtos/:id/estoque`
-
-```json
-{
-  "estoque": 15
-}
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
+cd nome-do-repositorio
 ```
 
-## Interface HTML
+2. **Instale as dependências:**
+```bash
+npm install
+```
 
-* `formulario.html`: Permite cadastrar novos produtos.
-* `produtos.html`: Exibe todos os produtos cadastrados com opção de excluir e atualizar estoque.
+3. **Configure o arquivo `.env`:**
+Crie um arquivo `.env` na raiz com:
 
+```
+PORT=3000
+MONGO_URI=sua_string_de_conexao_mongodb_atlas
+```
 
-Deploy: [https://express-mongo-backend.onrender.com](https://express-mongo-backend.onrender.com/formulario.html)
+4. **Inicie o servidor:**
+```bash
+npm start
+```
+
+5. **Acesse no navegador:**
+```
+http://localhost:3000/formulario.html
+```
+
+---
+
+## 🌐 API - Endpoints
+
+| Método | Rota                        | Descrição                        |
+|--------|-----------------------------|----------------------------------|
+| GET    | `/produtos`                 | Lista todos os produtos          |
+| GET    | `/produtos/:id`             | Retorna um produto específico    |
+| POST   | `/produtos`                 | Cadastra um novo produto         |
+| DELETE | `/produtos/:id`             | Deleta um produto pelo ID        |
+| PATCH  | `/produtos/:id/estoque`     | Atualiza o estoque de um produto |
+
+---
+
+## 📱 Frontend Responsivo
+
+O projeto conta com duas páginas HTML:
+
+- `formulario.html`: para **cadastrar** produtos.
+- `produtos.html`: para **visualizar, excluir e atualizar estoque**.
+
+As páginas foram estilizadas com CSS moderno e responsivo para boa visualização em dispositivos móveis.
+
+---
+
+## ✅ Funcionalidades
+
+- [x] Cadastro com validação de campos
+- [x] Listagem dinâmica (fetch API)
+- [x] Atualização de estoque via botões
+- [x] Exclusão com confirmação
+- [x] Feedback de erro ou sucesso na interface
+- [x] Backend estruturado com Mongoose
+- [x] Deploy gratuito com Render
+
+---
+
+## 🛠️ Melhorias futuras
+
+- 🔐 Adicionar autenticação com JWT
+- 📋 Validação de entrada com express-validator
+- 💾 Paginação na listagem de produtos
+- 📊 Dashboard com estatísticas do estoque
+- ⚛️ Migrar frontend para React ou Vue.js
+
+---
+
+## 👨‍💻 Autor
+
+**Gabrielo**  
+Projeto pessoal com foco em praticar o desenvolvimento completo de uma aplicação com Node.js e MongoDB.
+
+---
+
+## 📄 Licença
+
+Este projeto é livre para fins de estudo e aprendizado.
+
+---
