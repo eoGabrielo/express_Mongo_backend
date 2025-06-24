@@ -1,11 +1,11 @@
-# Cadastro de Produtos - API + Frontend
+# Cadastro de Produtos - API
 
 Projeto API REST com Node.js, Express e MongoDB, integrada a uma interface HTML/CSS para cadastro, listagem e gerenciamento de produtos.
 
 ## Funcionalidades
 
 Cadastro de produtos via formulário HTML
-Listagem de produtos cadastrados com estilo responsivo
+Listagem de produtos cadastrados
 Exclusão de produtos individualmente
 Atualização de estoque com botões + e -
 
